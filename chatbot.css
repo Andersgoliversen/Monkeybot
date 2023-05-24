@@ -1,0 +1,120 @@
+/* Apply border-box sizing to all elements for consistent box model */
+* {box-sizing: border-box;}
+
+/* Body background image for large screens */
+body {
+  background-image: url("images/monkeyimage.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+/* Body background image for small screens */
+@media (max-width: 600px) {
+  body {
+    background-image: url("images/monkeyimage_small.png");
+  }
+}
+
+/* Body background image for medium screens */
+@media (min-width: 601px) and (max-width: 900px) {
+  body {
+    background-image: url("images/monkeyimage_medium.png");
+  }
+}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: rgb(77, 47, 27);
+  color: white;
+  padding: calc(0.5vw + 10px) calc(0.5vw + 10px);
+  font-size: calc(1vw + 10px);
+  border: none;
+  border-radius: calc(0.25vw + 5px);
+  cursor: pointer;
+  position: fixed;
+  bottom: calc(1vw + 20px);
+  right: calc(2vw + 20px);
+}
+
+/* Blue text for the user "You:" */
+.blue-text {
+  color: rgb(104, 116, 151);
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #252221;
+  border-radius: 5px;
+  z-index: 9;
+}
+
+/* Chatbot container that holds the conversation history*/
+#chatbot-container {
+  height: 300px; /* maximum height of the chat box */
+  overflow-y: scroll; /* scrollbar */
+  word-wrap: break-word;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: #f3f3f3;
+}
+
+/* Form header */
+.form-container h1 {
+  /* background-color: rgb(77, 47, 27); */
+  /* color: #fff; */
+  /* padding: 0 !important; */
+  text-align: center;
+}
+
+/* Full-width textarea */
+.form-container input {
+  width: 85%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  background: #f1f1f1;
+  float: left;
+}
+
+/* Set a style for the close button */
+.close-button {
+  background-color: rgb(165, 45, 24);
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  margin-top: 10px;
+}
+
+/* Styling for the Send button*/
+.send-button {
+  font-size: 20px;
+  color: currentColor;
+  color: rgb(49, 38, 31);
+  margin-left: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+/* Float the send button to the right within the form container*/
+.form-container .send-button {
+  float: right;
+}
+
+/* Add  hover effects to buttons */
+.form-container .close-button:hover, .open-button:hover, .send-button:hover {
+  opacity: 0.8;
+}

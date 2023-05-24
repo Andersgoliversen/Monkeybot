@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="a chatbot that replies with a string of random letters to any user questions.">
+    <meta name="author" content="Anders Gjesdal Oliversen">
+
+    <title>Monkeybot</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="chatbot.css">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+
+    <!-- icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+<body id="body" style="max-width:1200px">
+
+
+    <!-- Chatbot pop-up -->
+    <button class="open-button" onclick="openForm()"><span class="fa fa-comments"></span> Monkeybot</button>
+    <div class="chat-popup" id="chatbotForm">
+        <div class="form-container">
+            <h1><span class="fa fa-comments"></span><strong> MONKEYBOT</strong></h1>
+            <div id="chatbot-container" class="chatbot">
+                <p id="output"></p>
+            </div>
+            <div class="chatbot-input-container">
+                <p class="chatbot-input-label"></p>
+                <input id="input" class="input" type="text" placeholder="Ask monkey anything..." />
+                <button class="send-button" type="button" onclick="sendMessage()">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                </button>
+                <button class="close-button" type="button" onclick="closeForm()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to monkeybot Javascript -->
+    <script src="monkeyScript.js"></script>
+
+</body>
+
+</html>
