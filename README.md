@@ -4,7 +4,7 @@ Monkeybot is a simple web based chatbot that replies with a string of random let
 
 ## Usage
 
-1. Open `indexMonkey.html` in a modern web browser.
+1. Open `indexMonkey.html` in a web browser.
 2. Click the **Monkeybot** button to open the chat window.
 3. Type a question and either press **Enter** or click the send button.
 4. The bot will respond with a randomly generated string.
