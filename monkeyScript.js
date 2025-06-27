@@ -1,85 +1,90 @@
-// The chatbot object
+// Simple chatbot that returns a random string of letters
 const chatbot = {
   name: "Monkey",
-  reply: function (question) {
-    // Generate a random string of lowercase and uppercase characters
+  /**
+   * Generate a random response consisting of 20 characters.
+   * The question argument is ignored but kept for potential future use.
+   */
+  reply(question) {
+    const letters =
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let response = "";
     for (let i = 0; i < 20; i++) {
-      response += Math.random() < 0.5 ?
-        String.fromCharCode(Math.floor(Math.random() * 26) + 97) :
-        String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+      const index = Math.floor(Math.random() * letters.length);
+      response += letters[index];
     }
     return response;
   }
 };
 
-// Get references to the input and output elements
+// DOM element references
 const inputEl = document.getElementById("input");
 const outputEl = document.getElementById("output");
+const sendBtn = document.querySelector(".send-button");
 
-// automatically scroll to the bottom of the chatbot
+// Automatically scroll to the bottom of the chatbot
 const chatbotContainer = document.getElementById("chatbot-container");
 
 // Add an event listener to the input element to listen for user input
-inputEl.addEventListener("keydown", function (event) {
-    // If the user presses the Enter key, get the user's input and generate a response
-    if (event.keyCode === 13) {
-        sendMessage();
-    }
+// Send message when Enter is pressed
+inputEl.addEventListener("keydown", event => {
+  if (event.key === "Enter") {
+    sendMessage();
+  }
 });
 
-// Add an event listener to the send button
-sendBtn.addEventListener("click", function () {
-    sendMessage();
-});
+// Send message when the send button is clicked
+sendBtn.addEventListener("click", sendMessage);
 
 function sendMessage() {
-    // Get the user's input
-    const userInput = inputEl.value;
+  const userInput = inputEl.value.trim();
 
-    // If the user's input is empty, return without sending the message
-    if (!userInput) {
-        return;
-    }
+  // Don't send empty messages
+  if (!userInput) return;
 
-    // Clear the input element
-    inputEl.value = "";
+  // Clear the input field
+  inputEl.value = "";
 
-  // Append the user's input to the output element
-  outputEl.innerHTML += "<p><strong class='blue-text'>You:</strong> " + userInput + "</p>";
+  // Display the user's message
+  outputEl.innerHTML +=
+    `<p><strong class='blue-text'>You:</strong> ${userInput}</p>`;
 
-  // Append the "Monkey is typing" message
-  outputEl.innerHTML += "<p><strong>Monkey:</strong> Monkey is typing...</p>";
+  // Indicate that Monkey is typing
+  outputEl.innerHTML +=
+    "<p><strong>Monkey:</strong> Monkey is typing...</p>";
 
-  // Scroll to the bottom of the chatbot container
   chatbotContainer.scrollTop = chatbotContainer.scrollHeight;
 
-  // Delay for 2 seconds before generating the chatbot's response
+  // Generate the chatbot's response after a brief pause
   setTimeout(() => {
-    // Generate a response from the chatbot
     const chatbotResponse = chatbot.reply(userInput);
 
-    // Replace the "Monkey is typing" message with the chatbot's response
-    outputEl.innerHTML = outputEl.innerHTML.replace("<p><strong>Monkey:</strong> Monkey is typing...</p>", "<p><strong>Monkey:</strong> " + chatbotResponse + "</p>");
+    outputEl.innerHTML = outputEl.innerHTML.replace(
+      "<p><strong>Monkey:</strong> Monkey is typing...</p>",
+      `<p><strong>Monkey:</strong> ${chatbotResponse}</p>`
+    );
 
-    // Scroll to the bottom of the chatbot container
     chatbotContainer.scrollTop = chatbotContainer.scrollHeight;
   }, 1000);
 }
 
 // Open pop-up form
+// Show the chat window
 function openForm() {
   document.getElementById("chatbotForm").style.display = "block";
 }
 
 // Close pop-up form
+// Hide the chat window
 function closeForm() {
   document.getElementById("chatbotForm").style.display = "none";
 }
 
 // close if Esc is pressed on the keyboard
-document.addEventListener("keydown", function (event) {
-  if (event.keyCode === 27) {
+// Allow closing the chat with the Escape key
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
     closeForm();
   }
 });
+
