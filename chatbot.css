@@ -1,5 +1,7 @@
 /* Apply border-box sizing to all elements for consistent box model */
-* {box-sizing: border-box;}
+* {
+  box-sizing: border-box;
+}
 
 /* Body background image for large screens */
 body {
@@ -35,6 +37,8 @@ body {
   position: fixed;
   bottom: calc(1vw + 20px);
   right: calc(2vw + 20px);
+  /* Ensure button stays above other content */
+  z-index: 10;
 }
 
 /* Blue text for the user "You:" */
@@ -55,9 +59,13 @@ body {
 
 /* Chatbot container that holds the conversation history*/
 #chatbot-container {
-  height: 300px; /* maximum height of the chat box */
-  overflow-y: scroll; /* scrollbar */
+  height: 300px;
+  /* maximum height of the chat box */
+  overflow-y: scroll;
+  /* scrollbar */
   word-wrap: break-word;
+  /* Smooth scrolling for better UX */
+  scroll-behavior: smooth;
 }
 
 /* Add styles to the form container */
@@ -69,9 +77,6 @@ body {
 
 /* Form header */
 .form-container h1 {
-  /* background-color: rgb(77, 47, 27); */
-  /* color: #fff; */
-  /* padding: 0 !important; */
   text-align: center;
 }
 
@@ -83,6 +88,14 @@ body {
   border: none;
   background: #f1f1f1;
   float: left;
+  /* Smooth transition for focus effect */
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+/* Visual feedback when the user clicks the input */
+.form-container input:focus {
+  background-color: #fff;
+  outline: 2px solid rgb(77, 47, 27);
 }
 
 /* Set a style for the close button */
@@ -94,7 +107,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   margin-top: 10px;
 }
 
@@ -112,9 +125,13 @@ body {
 /* Float the send button to the right within the form container*/
 .form-container .send-button {
   float: right;
+  /* Vertically align with the input box roughly */
+  margin-top: 15px;
 }
 
-/* Add  hover effects to buttons */
-.form-container .close-button:hover, .open-button:hover, .send-button:hover {
+/* Add hover effects to buttons */
+.form-container .close-button:hover,
+.open-button:hover,
+.send-button:hover {
   opacity: 0.8;
 }
